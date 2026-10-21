@@ -1,0 +1,23 @@
+Immersive Portals
+Copyright qouteall and contributors
+Upstream: https://github.com/iPortalTeam/ImmersivePortalsMod
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This distribution is an unofficial fork maintained by hezhixin15:
+https://github.com/hezhixin15/immersive-portals-vulkanmod
+
+It is based on Immersive Portals 6.0.6 for Minecraft 1.21.1 (Fabric) and has
+been modified to run on VulkanMod without an OpenGL context. Java files changed
+or added by this fork carry a notice at the top of the file; the two modified
+mixin JSON files are listed in FORK_CHANGES.md, and the full history is in this
+repository's commits.
+
+This fork is not affiliated with, endorsed by, or supported by qouteall,
+iPortalTeam, or the VulkanMod project. Please report fork issues to
+https://github.com/hezhixin15/immersive-portals-vulkanmod/issues and not to
+the upstream project.
+
+Some upstream source files contain code adapted from Minecraft
+(c) Mojang Studios, and some upstream assets are derived from Minecraft
+textures. Those parts remain subject to Mojang's rights and are not relicensed
+by the Apache License, Version 2.0.

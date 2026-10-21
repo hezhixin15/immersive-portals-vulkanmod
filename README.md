@@ -1,0 +1,117 @@
+# Immersive Portals — VulkanMod Fork
+
+> **Unofficial fork. Not the official Immersive Portals repository.**
+>
+> Fork of [iPortalTeam/ImmersivePortalsMod](https://github.com/iPortalTeam/ImmersivePortalsMod)
+> (Immersive Portals 6.0.6, Minecraft 1.21.1, Fabric), modified to render see-through portals
+> on **VulkanMod** without an OpenGL context. Maintained by
+> [hezhixin15](https://github.com/hezhixin15).
+>
+> Not affiliated with, endorsed by, or supported by qouteall, iPortalTeam, or the VulkanMod
+> project. Report fork-specific bugs to
+> [this repository's issues](https://github.com/hezhixin15/immersive-portals-vulkanmod/issues),
+> not upstream.
+
+This source tree matches the build distributed as
+`遮挡剔除版immersive-portals-6.0.6-mc1.21.1-fabric-vulkan.jar`
+(per-portal image cache + fully-covered portal culling).
+
+## Requirements
+
+| | |
+|---|---|
+| Minecraft | 1.21.1 |
+| Mod loader | Fabric Loader 0.16.2+ |
+| Dependencies | Fabric API (1.21.1), [VulkanMod](https://github.com/xCollateral/VulkanMod) 0.6.7 (tested version) |
+| Java | 21+ |
+
+Sodium / Iris / OptiFine are **not** supported and must not be installed alongside VulkanMod.
+
+## Installation
+
+1. Remove any existing Immersive Portals jar from `mods/`. The mod id is still
+   `immersive_portals`, so the upstream jar and this fork cannot coexist.
+2. Drop the fork jar and VulkanMod into `mods/`.
+3. Launch with the Vulkan renderer selected.
+
+## What changed compared to upstream 6.0.6
+
+- **Terrain rendering bridge** — VulkanMod's world renderer is driven per dimension, with
+  chunk-status routing, so secondary worlds (portal destinations) can be rendered without
+  an OpenGL context.
+- **Portal rendering on Vulkan** — portals are still drawn into off-screen framebuffers, but
+  every GL call the portal renderer depends on was replaced or bridged for Vulkan.
+- **Translucent layer ordering inside portal passes** — transparency is re-sorted per portal
+  view instead of being skipped.
+- **Indirect draw support** — draw parameters are appended per portal pass instead of being
+  forced onto the direct path.
+- **Per-portal image cache** — each visible portal owns an off-screen target. At most two
+  portals run a full world render per frame; the rest composite their previous image
+  (refreshed after 250 ms + 40 ms per slot, on portal state change, or when the portal covers
+  more than half the screen).
+- **Occlusion culling** — on Vulkan there are no occlusion queries, so a portal that is
+  completely hidden behind a nearer portal's opening is skipped instead of costing a full
+  world render. Only the conservative case is culled; anything partially visible is still
+  rendered.
+- **In-portal water / translucent fix** — VulkanMod encodes the Y flip in the sign of the
+  viewport height; portal passes now re-assert the viewport instead of inheriting an
+  unflipped one.
+- The OpenGL path is untouched. If you play without VulkanMod, use the upstream jar.
+
+## Known limitations
+
+- Only VulkanMod 0.6.7 on Minecraft 1.21.1 has been tested.
+- Cached portal images can lag 250–370 ms while the camera moves; they snap in once you stop.
+- The image cache is bypassed for the GUI portal view and for cross-portal views.
+- Every *live* portal still costs one full world render. With several open portals the frame
+  rate drops roughly linearly in the number of live portals, not in the number of visible
+  portals.
+- The water fix and the occlusion culling are verified structurally, not across every
+  dimension/driver combination. Please report anomalies with a log attached.
+
+## Building
+
+```bash
+./gradlew build
+```
+
+The jar is written to `build/libs/`. VulkanMod is **not** a compile-time dependency:
+everything that touches it goes through reflection and a mixin plugin that only applies when
+a non-OpenGL renderer is present.
+
+## License
+
+Licensed under the [Apache License 2.0](LICENSE). See [NOTICE](NOTICE) for attribution of
+the upstream project and the non-affiliation statement; [FORK_CHANGES.md](FORK_CHANGES.md)
+lists every file added, modified or removed by this fork.
+
+Modified upstream files carry a notice at the top of the file, as required by
+Apache-2.0 section 4(b). Some files contain code adapted from Minecraft (© Mojang Studios)
+and some bundled assets are derived from Minecraft textures; those are not relicensed by
+Apache-2.0.
+
+## Credits
+
+- Immersive Portals, by qouteall and contributors —
+  [upstream repository](https://github.com/iPortalTeam/ImmersivePortalsMod) ·
+  [wiki](https://qouteall.fun/immptl/wiki/) · [Modrinth](https://modrinth.com/mod/immersiveportals)
+- VulkanMod, by xCollateral — [repository](https://github.com/xCollateral/VulkanMod)
+
+---
+
+## 中文说明
+
+这是 [Immersive Portals](https://github.com/iPortalTeam/ImmersivePortalsMod) 6.0.6（Minecraft
+1.21.1 / Fabric）的**非官方分支**，目的只有一个：让它能在 VulkanMod 上正常显示传送门画面，
+不再依赖 OpenGL。与原作者 qouteall、iPortalTeam 和 VulkanMod 项目均无隶属关系。
+
+**安装**：`mods/` 里只能有一个 Immersive Portals（mod id 没变），先把原版包删掉，再放入本分支
+的 jar、Fabric API 和 VulkanMod 0.6.7。不支持 Sodium / Iris / OptiFine。
+
+**已知问题**：
+
+- 只在 1.21.1 + VulkanMod 0.6.7 上验证过。
+- 传送门画面有缓存，镜头移动时最多滞后约 0.25–0.37 秒，停下后自动变清晰。
+- 每个"实时渲染"的门仍然要跑一整趟世界渲染，门开得越多帧率越低。
+- 水面修复与遮挡剔除只做了结构性验证，遇到异常请附日志提 issue。
+- 想用 OpenGL 后端请直接用原作者的包，本分支没有改动 OpenGL 路径。
