@@ -1,5 +1,9 @@
 # Immersive Portals — VulkanMod Fork
 
+<p align="center">
+  <strong>English</strong> &nbsp;|&nbsp; <a href="README.zh-CN.md"><strong>简体中文</strong></a> &nbsp;|&nbsp; <a href="README.zh-TW.md"><strong>繁體中文</strong></a>
+</p>
+
 > **Unofficial fork. Not the official Immersive Portals repository.**
 >
 > Fork of [iPortalTeam/ImmersivePortalsMod](https://github.com/iPortalTeam/ImmersivePortalsMod)
@@ -96,22 +100,3 @@ Apache-2.0.
   [upstream repository](https://github.com/iPortalTeam/ImmersivePortalsMod) ·
   [wiki](https://qouteall.fun/immptl/wiki/) · [Modrinth](https://modrinth.com/mod/immersiveportals)
 - VulkanMod, by xCollateral — [repository](https://github.com/xCollateral/VulkanMod)
-
----
-
-## 中文说明
-
-这是 [Immersive Portals](https://github.com/iPortalTeam/ImmersivePortalsMod) 6.0.6（Minecraft
-1.21.1 / Fabric）的**非官方分支**，目的只有一个：让它能在 VulkanMod 上正常显示传送门画面，
-不再依赖 OpenGL。与原作者 qouteall、iPortalTeam 和 VulkanMod 项目均无隶属关系。
-
-**安装**：`mods/` 里只能有一个 Immersive Portals（mod id 没变），先把原版包删掉，再放入本分支
-的 jar、Fabric API 和 VulkanMod 0.6.7。不支持 Sodium / Iris / OptiFine。
-
-**已知问题**：
-
-- 只在 1.21.1 + VulkanMod 0.6.7 上验证过。
-- 传送门画面有缓存，镜头移动时最多滞后约 0.25–0.37 秒，停下后自动变清晰。
-- 每个"实时渲染"的门仍然要跑一整趟世界渲染，门开得越多帧率越低。
-- 水面修复与遮挡剔除只做了结构性验证，遇到异常请附日志提 issue。
-- 想用 OpenGL 后端请直接用原作者的包，本分支没有改动 OpenGL 路径。
