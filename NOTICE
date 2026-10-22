@@ -6,11 +6,14 @@ Licensed under the Apache License, Version 2.0 (see LICENSE).
 This distribution is an unofficial fork maintained by hezhixin15:
 https://github.com/hezhixin15/immersive-portals-vulkanmod
 
-It is based on Immersive Portals 6.0.6 for Minecraft 1.21.1 (Fabric) and has
-been modified to run on VulkanMod without an OpenGL context. Java files changed
-or added by this fork carry a notice at the top of the file; the two modified
-mixin JSON files are listed in FORK_CHANGES.md, and the full history is in this
-repository's commits.
+It is based on Immersive Portals 6.0.6 taken from the upstream "1.21" branch,
+whose LICENSE is the Apache License, Version 2.0 reproduced here. Note that
+upstream's "master" and "1.15" branches carry a different license (GPL-2.0):
+anyone re-forking from this project should base on the same "1.21" branch.
+The mod has been modified to run on VulkanMod without an OpenGL context. Java
+files changed or added by this fork carry a notice at the top of the file; the
+two modified mixin JSON files are listed in FORK_CHANGES.md, and the full
+history is in this repository's commits.
 
 This fork is not affiliated with, endorsed by, or supported by qouteall,
 iPortalTeam, or the VulkanMod project. Please report fork issues to
@@ -21,3 +24,13 @@ Some upstream source files contain code adapted from Minecraft
 (c) Mojang Studios, and some upstream assets are derived from Minecraft
 textures. Those parts remain subject to Mojang's rights and are not relicensed
 by the Apache License, Version 2.0.
+
+The built jar also redistributes two third-party projects, unchanged and as
+separate nested jars under META-INF/jars, exactly as upstream 6.0.6 did:
+
+- DimLib v1.1.0 by qouteall — Apache License, Version 2.0
+  (LICENSE_dimlib travels inside the nested jar)
+- Cloth Config API 15.0.130 for Fabric by shedaniel — GNU LGPL v3
+  (LICENSE.md travels inside the nested jar)
+
+Neither is relicensed by this fork; each remains under its own terms.

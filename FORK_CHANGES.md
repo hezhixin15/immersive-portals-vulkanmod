@@ -77,3 +77,41 @@ src/main/resources/imm_ptl_peripheral.mixins.json
 ```
 src/main/java/qouteall/imm_ptl/core/compat/VulkanDiagnostics.java
 ```
+
+## Build and repository files changed
+
+```
+build.gradle
+gradle.properties
+changelog.md
+```
+
+- `gradle.properties`: `mod_version` is `6.0.6-vulkan.1` rather than upstream's
+  `6.0.6`, so this fork's jar name cannot collide with an upstream build. The
+  upstream-only `git_branch` property was dropped along with the block that
+  used it.
+- `build.gradle`: the upstream `publishMods` block was removed. It pointed at
+  the author's own CurseForge project (332273), Modrinth project (zJpHMkdD) and
+  `iPortalTeam/ImmersivePortalsMod`, so a fork must not carry it. Nothing else
+  in the build changed; the block was never wired into `build`, and the
+  `from("LICENSE")` entry that embeds the license into the jar is kept.
+- `changelog.md`: describes this fork's release, with the upstream 6.0.6 note
+  retained below it.
+- Upstream tooling that only served the author's own workflows was removed:
+  `sync-crowdin.bat` (the author's Crowdin translation project) and the three
+  `.github/DISCUSSION_TEMPLATE` forms, which ask reporters to phrase issues
+  against upstream's supported configurations.
+
+## Fork-only files
+
+```
+LICENSE
+NOTICE
+FORK_CHANGES.md
+README.md
+README.zh-CN.md
+README.zh-TW.md
+```
+
+`LICENSE` is upstream's Apache-2.0 text, byte for byte. `NOTICE`, this file and
+the three READMEs are written by this fork.
