@@ -20,6 +20,9 @@
 — every published jar is built from the commit its tag points at, so the source here and the
 binary are the same thing. Building it yourself is described under [Building](#building).
 
+<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/e176a15d-61bc-4538-906d-72271aea2164" />
+
+
 ## Requirements
 
 | | |
