@@ -2,9 +2,6 @@ plugins {
     id 'fabric-loom' version '1.8-SNAPSHOT'
 
     id 'maven-publish'
-
-    id "me.modmuss50.mod-publish-plugin" version "0.3.5"
-    // https://modmuss50.github.io/mod-publish-plugin/
 }
 
 version = project.mod_version
@@ -215,37 +212,3 @@ task printClasspath {
 //        events "passed", "skipped", "failed"
 //    }
 //}
-
-publishMods {
-    file = remapJar.archiveFile
-    changelog = file("changelog.md").text
-    type = ALPHA
-    modLoaders.add("fabric")
-
-    displayName = "v${project.mod_version}-mc${project.minecraft_version}"
-    version = "v${project.mod_version}-mc${project.minecraft_version}"
-
-    curseforge {
-        projectId = "332273"
-        accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
-        minecraftVersions.add(minecraft_version)
-
-        requires {
-            slug = "fabric-api"
-        }
-    }
-    modrinth {
-        projectId = "zJpHMkdD"
-        accessToken = providers.environmentVariable("MODRINTH_TOKEN")
-        minecraftVersions.add(minecraft_version)
-
-        requires {
-            slug = "fabric-api"
-        }
-    }
-    github {
-        repository = "iPortalTeam/ImmersivePortalsMod"
-        accessToken = providers.environmentVariable("GITHUB_TOKEN")
-        commitish = "${project.git_branch}"
-    }
-}

@@ -13,8 +13,9 @@
 > 项目均无隶属关系，也未获得其认可或支持。分支本身的问题请提到
 > [本仓库的 issues](https://github.com/hezhixin15/immersive-portals-vulkanmod/issues)，不要提到上游。
 
-这份源码对应以 `遮挡剔除版immersive-portals-6.0.6-mc1.21.1-fabric-vulkan.jar` 分发的构建
-（每个传送门一张缓存图 + 完全被挡住的门不再渲染）。
+**下载：**[最新版本](https://github.com/hezhixin15/immersive-portals-vulkanmod/releases/latest)
+—— 发布页里每个 jar 都是用它的 tag 所指的那次提交构建的，所以这里的源码和二进制是同一份东西；
+想自己编的话看下面的「构建」。
 
 ## 运行要求
 

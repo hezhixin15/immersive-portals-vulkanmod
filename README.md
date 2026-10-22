@@ -16,9 +16,9 @@
 > [this repository's issues](https://github.com/hezhixin15/immersive-portals-vulkanmod/issues),
 > not upstream.
 
-This source tree matches the build distributed as
-`遮挡剔除版immersive-portals-6.0.6-mc1.21.1-fabric-vulkan.jar`
-(per-portal image cache + fully-covered portal culling).
+**Download:** [latest release](https://github.com/hezhixin15/immersive-portals-vulkanmod/releases/latest)
+— every published jar is built from the commit its tag points at, so the source here and the
+binary are the same thing. Building it yourself is described under [Building](#building).
 
 ## Requirements
 
