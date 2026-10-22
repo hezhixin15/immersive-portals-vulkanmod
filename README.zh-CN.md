@@ -17,6 +17,9 @@
 —— 发布页里每个 jar 都是用它的 tag 所指的那次提交构建的，所以这里的源码和二进制是同一份东西；
 想自己编的话看下面的「构建」。
 
+<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/869768a7-0cb3-469a-ba80-bc319be5778b" />
+
+
 ## 运行要求
 
 | | |
