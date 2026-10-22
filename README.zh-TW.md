@@ -84,3 +84,9 @@
   [上游倉庫](https://github.com/iPortalTeam/ImmersivePortalsMod) ·
   [Wiki](https://qouteall.fun/immptl/wiki/) · [Modrinth](https://modrinth.com/mod/immersiveportals)
 - VulkanMod，作者 xCollateral —— [倉庫](https://github.com/xCollateral/VulkanMod)
+
+## AI 參與說明
+
+本分支更換渲染 API 的工作（把傳送門渲染從 OpenGL 移植到 VulkanMod）有 AI 參與並提供協助：
+AI 協助閱讀與分析兩邊程式碼、起草與重構實作、排查渲染問題。AI 產生的程式碼在提交前，人工
+都完整審過一遍；倉庫裡遺留的問題由維護者負責。

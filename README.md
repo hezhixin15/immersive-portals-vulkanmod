@@ -100,3 +100,11 @@ Apache-2.0.
   [upstream repository](https://github.com/iPortalTeam/ImmersivePortalsMod) ·
   [wiki](https://qouteall.fun/immptl/wiki/) · [Modrinth](https://modrinth.com/mod/immersiveportals)
 - VulkanMod, by xCollateral — [repository](https://github.com/xCollateral/VulkanMod)
+
+## AI involvement
+
+The rendering-API adaptation work in this fork — porting portal rendering off OpenGL and onto
+VulkanMod — was done with AI assistance: an AI agent helped read and analyse both codebases,
+draft and refactor code, and trace rendering bugs. Every piece of AI-generated code was
+reviewed by the human maintainer before it was committed, and the remaining issues are the
+maintainer's responsibility.
