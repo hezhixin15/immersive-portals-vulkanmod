@@ -17,6 +17,9 @@
 —— 發布頁裡每個 jar 都是用它的 tag 所指的那次提交建置的，所以這裡的原始碼和二進位是同一份東西；
 想自己編的話看下面的「建置」。
 
+<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/6cff330c-d268-46a1-a77d-99a5d29ff1e1" />
+
+
 ## 執行需求
 
 | | |
